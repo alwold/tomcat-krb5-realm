@@ -1,0 +1,39 @@
+<project default="build">
+ <property name="build" value="${basedir}/../build"/>
+ <property name="doc" value="${basedir}/../doc" />
+ <property name="appname" value="Tomcat Krb5 JAAS Login Module"/>
+ <property name="jarfile" value="krb5-tomcat.jar"/>
+
+ <!-- Create the destination directory -->
+ <target name="prepare">
+  <tstamp/>
+  <mkdir dir="${build}"/>
+  <mkdir dir="${doc}"/>
+ </target>
+
+ <!-- Build class files -->
+ <target name="build" depends="prepare">
+  <javac debug="true" srcdir="${basedir}" destdir="${build}"/>
+ </target>
+
+ <!-- Remove the destination directory -->
+ <target name="clean">
+  <delete dir="${build}"/>
+  <delete dir="${doc}"/>
+ </target>
+
+ <!-- generate jar file -->
+ <target name="dist" depends="build">
+  <jar destfile="${basedir}/../${jarfile}">
+   <fileset dir="${build}"/>
+  </jar>
+ </target>
+
+ <!-- Generate javadocs -->
+ <target name="javadoc" depends="prepare">
+  <javadoc packagenames="*" sourcepath="${basedir}" destdir="${doc}" classpath="${CLASSPATH}"
+           windowtitle="${appname}" doctitle="${appname}" serialwarn="false"/>
+ </target>
+
+</project>
+
