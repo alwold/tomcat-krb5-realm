@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<project>
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>com.alwold</groupId>
+ <artifactId>tomcat-krb5-realm</artifactId>
+ <version>1.0</version>
+ <packaging>jar</packaging>
+</project>
